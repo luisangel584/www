@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cartelera DB</title>
+</head>
+<body>
+	
+
+
+
+<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDpd8cnA3TqbBBvh0BT76ZF5U1K3QNzFHY",
+    authDomain: "myapp-af1b0.firebaseapp.com",
+    databaseURL: "https://myapp-af1b0.firebaseio.com",
+    storageBucket: "myapp-af1b0.appspot.com",
+    messagingSenderId: "480318302086"
+  };
+
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+  var refPelis = database.ref("domo/horarios");
+
+  refPelis.orderByChild("dia").equalTo("Viernes").on('child_added', function(ss){
+  	var res = ss.val();
+  	console.log(res.hora);
+  });
+</script>
+</body>
+</html>
